@@ -6,3 +6,5 @@ Primary objective: Return statistical information about baby names drawn from th
 Query shall return: The first year the name was recorded, Year it was popular, and an array of the top ten years it appeared frequently. 
 
 Created By Guillermo Garcia and Justin Hobbs
+
+--File subject to updates/improvements--
