@@ -1,3 +1,7 @@
+from databaseActions import DatabaseActions, Person
+
+
+
 def display_menu():
     print(f"==Database Modification System==")
     print(f"1. Generate Database")
@@ -24,7 +28,7 @@ def run_menu(choice: int):
         year = input(f"Please enter the person's year of birth: ")
         numbberOfOccurences = input(f"Please enter the number of occurences of {name} in the {year}: ")
 
-        person = person(None, name, sex, year, numbberOfOccurences)
+        person = Person(None, name, sex, year, numbberOfOccurences)
         DatabaseActions.create_person(person)
         return False
     elif choice == 3:
