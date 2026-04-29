@@ -18,17 +18,17 @@ def home():
     mostPopularYear = None
     tenMostPopularYears = None
     if personYears:
-        sortedYears = sorted(personYears, key=lambda p: p.numberOfOccurences, reverse=True)
+        sortedYears = sorted(personYears, key=lambda p: p.NumberOfOccurrences, reverse=True)
         mostPopularYear = sortedYears[0] if sortedYears else None
         tenMostPopularYears = sortedYears[:10]
 
     firstOccurenceYear = personYears[0] if personYears else None
 
-    message = f'"name": "{name}", "first_year": {firstOccurenceYear}, "most_popular_year": {mostPopularYear}, "ten_most_popular_years": {tenMostPopularYears}'
+    message = f'"name": "{name}", "first_year": {firstOccurenceYear.Year if firstOccurenceYear else "N/A"}, "most_popular_year": {mostPopularYear.Year if mostPopularYear else "N/A"}, "ten_most_popular_years": ['
     if tenMostPopularYears:
-        message += ", ".join([f'"{year.year}": {year.numberOfOccurences}' for year in tenMostPopularYears])
-    message +="]"
-    message += f', "estimated_age": "{2026 - sum(int(year.year) for year in tenMostPopularYears) // len(tenMostPopularYears) if tenMostPopularYears else "N/A"}"'
+        message += ", ".join([f'"{year.Year}"' for year in tenMostPopularYears])
+    message += "]"
+    message += f', "estimated_age": "{2026 - sum(int(year.Year) for year in tenMostPopularYears) // len(tenMostPopularYears) if tenMostPopularYears else "N/A"}"'
 
     return jsonify(Message=message)
 if __name__ == "__main__":

@@ -26,9 +26,9 @@ def run_menu(choice: int):
         name = input(f"Please enter the name: ")
         sex = input(f"Please enter the person's sex (M/F): ")
         year = input(f"Please enter the person's year of birth: ")
-        numbberOfOccurences = input(f"Please enter the number of occurences of {name} in the {year}: ")
+        numberOfOccurrences = input(f"Please enter the number of occurrences of {name} in the {year}: ")
 
-        person = Person(None, name, sex, year, numbberOfOccurences)
+        person = Person(None, name, sex, year, numberOfOccurrences)
         DatabaseActions.create_person(person)
         return False
     elif choice == 3:
@@ -51,19 +51,19 @@ def run_menu(choice: int):
             print("Person not found.")
             return False
 
-        name = input(f"Please enter the new name (leave blank to keep current) '{actualPerson.name}': ")
-        sex = input(f"Please enter the sex of the person (M/F) (leave blank to keep current) '{actualPerson.sex}': ")
-        year = input(f"Please enter the year of birth (leave blank to keep current) '{actualPerson.year}': ")
-        numberOfOccurences = input(f"Please enter the new number of occurences (leave blank to keep current) '{actualPerson.numberOfOccurences}': ")
+        name = input(f"Please enter the new name (leave blank to keep current) '{actualPerson.Name}': ")
+        sex = input(f"Please enter the sex of the person (M/F) (leave blank to keep current) '{actualPerson.Sex}': ")
+        year = input(f"Please enter the year of birth (leave blank to keep current) '{actualPerson.Year}': ")
+        numberOfOccurrences = input(f"Please enter the new number of occurences (leave blank to keep current) '{actualPerson.NumberOfOccurrences}': ")
 
         if name: 
-            actualPerson.name = name
+            actualPerson.Name = name
         if sex:
             actualPerson.Sex = sex
         if year:
-            actualPerson.year = year
-        if numberOfOccurences:
-            actualPerson.numberOfOccurences = int(numberOfOccurences)
+            actualPerson.Year = year
+        if numberOfOccurrences:
+            actualPerson.NumberOfOccurrences = int(numberOfOccurrences)
 
         if actualPerson is not None:
             DatabaseActions.update_person(actualPerson)

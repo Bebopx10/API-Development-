@@ -10,7 +10,7 @@ class Person:
     Name: str
     Sex: str
     Year: str
-    NumberOfOccurences: int
+    NumberOfOccurrences: int
 
 class DatabaseActions:
     CONFIG_PATH = Path(__file__).resolve().parent / "config.cfg"
@@ -47,7 +47,7 @@ class DatabaseActions:
         with DatabaseActions.get_conn() as conn:
             cur = conn.execute(
                 "INSERT INTO Persons (Name, Sex, Year, NumberOfOccurrences) VALUES (?, ?, ?, ?)",
-                (person.Name, person.Sex, person.Year, person.NumberOfOccurences)
+                (person.Name, person.Sex, person.Year, person.NumberOfOccurrences)
             )
             conn.commit()
             return cur.lastrowid
@@ -62,10 +62,10 @@ class DatabaseActions:
             row = conn.execute("SELECT * FROM Persons WHERE Name = ?", (name,)).fetchone()
             return Person(**row) if row else None
         
-    def list_years_by_person_name(name: str) -> List[str]:
+    def list_years_by_person_name(name: str) -> List[Person]:
         with DatabaseActions.get_conn() as conn:
-            rows = conn.execute("SELECT Year FROM Persons WHERE Name = ?", (name,)).fetchall()
-            return [row["Year"] for row in rows]
+            rows = conn.execute("SELECT * FROM Persons WHERE Name = ?", (name,)).fetchall()
+            return [Person(**row) for row in rows]
         
     def list_persons() -> List[Person]:
         with DatabaseActions.get_conn() as conn:
@@ -81,7 +81,7 @@ class DatabaseActions:
                 SET Name = ?, Sex = ?, Year = ?, NumberOfOccurrences = ?
                 WHERE Id = ?
                 """,
-                (person.Name, person.Sex, person.Year, person.NumberOfOccurences, person.Id)
+                (person.Name, person.Sex, person.Year, person.NumberOfOccurrences, person.Id)
             )
             conn.commit()
             return cur.rowcount == 1
@@ -119,7 +119,7 @@ class DatabaseActions:
                         Name=name,
                         Sex=sex,
                         Year=year,
-                        NumberOfOccurences=count
+                        NumberOfOccurrences=count
                     )
                     DatabaseActions.create_person(person)
         print("Database population complete.")
