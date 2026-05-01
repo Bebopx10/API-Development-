@@ -8,5 +8,3 @@ Query shall return: The first year the name was recorded, Year it was popular, a
 Created By Guillermo Garcia and Justin Hobbs
 
 --File subject to updates/improvements--
-
-http://127.0.0.1:5000/?name= (Place name here)
