@@ -1,9 +1,13 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+try:
+    from flask_cors import CORS
+except ImportError:
+    CORS = None
 from databaseActions import DatabaseActions
 
 app = Flask(__name__)
-CORS(app)
+if CORS:
+    CORS(app)
 
 @app.route("/")
 def home():
