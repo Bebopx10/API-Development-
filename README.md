@@ -9,4 +9,5 @@ Created By Guillermo Garcia and Justin Hobbs
 
 --File subject to updates/improvements--
 
-http://127.0.0.1:5000/?name= (Place name here)
+
+http://127.0.0.1:5000/?name=
